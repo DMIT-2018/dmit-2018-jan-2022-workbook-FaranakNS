@@ -10,3 +10,10 @@
 }
 <h1>Basics of Razor Page Review</h1>
 
+@if(string.IsNullOrWhiteSpace(Model.MyName)){
+
+<p>The random number is odd.</p>
+}else{
+
+<p>@Model.MyName</p>
+} <!--eof-->
