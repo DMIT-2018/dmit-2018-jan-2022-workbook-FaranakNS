@@ -12,7 +12,8 @@ namespace WebApp.Pages.SamplePages
         //data fields
 
         //properties
-
+        //the annotation BindProperty ties a property in the pageModel class
+        //Directly to a..
         //constructors
 
         //behaviors(AKA methods)
