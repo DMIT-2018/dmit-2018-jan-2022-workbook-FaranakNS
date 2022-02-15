@@ -6,4 +6,17 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="BLL\dummy.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="BLL\dummy.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DAL\" />
+    <Folder Include="Entities\" />
+  </ItemGroup>
+
 </Project>
