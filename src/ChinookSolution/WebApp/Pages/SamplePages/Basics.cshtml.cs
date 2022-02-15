@@ -54,5 +54,20 @@ namespace WebApp.Pages.SamplePages
             }
 
         }
+
+        //processing in response to a request from a form on a web page
+        //this request is referred to as a Post(method="Post")
+
+        //General Post occures when a asp-page-handler is NOT used
+        //the return datatype can be void, however,your will randomly encounter the datatype IActionResult
+
+        //the IActionResult requires some type of request action on the return statement of the method OnPost()
+
+        //Page()
+        // :does not issue a OnGet request
+        // :remains on the current page
+        // : a good action for form processing involving validation
+        //  : and with the catch of a try/catch
     }
+
 }
