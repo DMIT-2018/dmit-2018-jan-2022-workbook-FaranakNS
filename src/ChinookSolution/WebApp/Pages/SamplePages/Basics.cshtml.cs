@@ -9,11 +9,25 @@ namespace WebApp.Pages.SamplePages
 
         //basically this is an object, treat it as such
 
-        //data fields
-
         //properties
+
+        //data fields
+        //the annotation [TempData] stores data untill its read in another imidiate request
+        //this annotation attirbute has 2 methods called Keep(string) and Peek(string) (used on Content Page)
+        //Keep in a dictionary (name/value pair)
+        //useful to redirect when data is required for more than a single request
+        //Implemented by Tempdata providers using either cookies or session state
+        //Tempdata is Not bound to any particular control like BindProperty
+
+        [TempData]
+        public string Feedback { get; set; }
+
         //the annotation BindProperty ties a property in the pageModel class
-        //Directly to a..
+        //Directly to a control on the content page
+        //data is transfered between the 2 automatically
+        //on the Content page,the control to use this property will have s helper-tag called asp-for
+        [BindProperty]
+        public int id { get; set; }
         //constructors
 
         //behaviors(AKA methods)
