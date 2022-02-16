@@ -26,8 +26,15 @@ namespace WebApp.Pages.SamplePages
         //Directly to a control on the content page
         //data is transfered between the 2 automatically
         //on the Content page,the control to use this property will have s helper-tag called asp-for
-        [BindProperty]
-        public int id { get; set; }
+
+            //to retain a value in the control tied to this property AND retained
+            //via the @Page use the supportGet attirbute =true
+
+        [BindProperty(SupportsGet =true)]
+       
+        public int? id { get; set; }
+
+
         //constructors
 
         //behaviors(AKA methods)
@@ -88,7 +95,7 @@ namespace WebApp.Pages.SamplePages
             string buttonValue = Request.Form["theButton"];
             Feedback = $"Button press is {buttonValue} with numeric input of { id}";
             /* return Page();*/ //does not issue a OnGet()
-            return RedirectToPage(); //request for OnGet();
+            return RedirectToPage(new {id=id }); //request for OnGet();
         
         }
     }
