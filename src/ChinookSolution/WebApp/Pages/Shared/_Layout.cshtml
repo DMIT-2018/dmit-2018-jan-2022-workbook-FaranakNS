@@ -4,10 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebApp</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
  
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
+  @*  Render section is a way of allowing statements/code/tags to be placed in a certain area of the layout.
+    By default this is a required entry on each content page. usign required:false 
+      makes this an optional entry on any content page.
+      If the section is used on a content page, then the code within the section
+      reference on the contnt page is merged in place here on the layout page*@
+  @RenderSection("CustomCSS", required:false)
 </head>
 <body>
     <header>
@@ -47,11 +53,15 @@
                     <li>
                          <a  asp-area="" asp-page="/SamplePages/Basics">Basics</a>
                     </li>
+
+                     <li>
+                         <a  asp-area="" asp-page="/SamplePages/Controls">Controls</a>
+                    </li>
                 </ul>
             </li>
             <li>
                 <a  asp-area="" asp-page="/Privacy">Privacy</a>
-            </li>
+            </li>;
         <partial name="_LoginPartial" />
 
         </ul>
