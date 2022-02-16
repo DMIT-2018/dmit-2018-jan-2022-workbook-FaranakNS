@@ -68,6 +68,29 @@ namespace WebApp.Pages.SamplePages
         // :remains on the current page
         // : a good action for form processing involving validation
         //  : and with the catch of a try/catch
+
+      //RedirectToPage()
+      // :Does issue a OnGet request
+      // : is used to retaining input values via the @page and your BindProperty
+      //    form controls on your form on the Content Page
+
+
+        public IActionResult OnPost()
+        {
+            //this line of code is used to cause a delay in processing 
+            //so we can see on the network Activity some type of stimulated processing
+            Thread.Sleep(2000);
+
+            //retrieve data via the Request object
+            //Request: web page to server
+            //Response: server to web page
+
+            string buttonValue = Request.Form["theButton"];
+            Feedback = $"Button press is {buttonValue} with numeric input of { id}";
+            /* return Page();*/ //does not issue a OnGet()
+            return RedirectToPage(); //request for OnGet();
+        
+        }
     }
 
 }
