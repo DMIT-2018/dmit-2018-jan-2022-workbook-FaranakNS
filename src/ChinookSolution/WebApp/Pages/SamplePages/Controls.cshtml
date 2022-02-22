@@ -76,6 +76,16 @@
          <input type="radio" value="snacks" asp-for="Meal" /> 
         &nbsp; Breakfast<br />
 
+
+       @* //CheckBox*@
+       <label>
+           <input type="checkbox" value="true" asp-for="AcceptanceBox" />
+           &nbsp; I agree to terms
+       </label>
+       <br />
+       <label>
+
+       </label>
         <button type="submit" value="radiocheckarea" id="theRadioCheckAreaButton" name="theRadioCheckAreaButton"
         asp-page-handler="RadioCheckArea"> Radio/Check/Area Submit</button>
     </form>
