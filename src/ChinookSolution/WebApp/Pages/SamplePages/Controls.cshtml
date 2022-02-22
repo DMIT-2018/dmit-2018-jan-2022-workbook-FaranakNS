@@ -63,6 +63,19 @@
 <div class="onethird">
     <h3>Radiobuttons CheckBox TextArea</h3>
     <form method="post">
+        <label>
+            Select Favorite meal<br />
+ 
+        </label>
+        <input type="radio" value="breakfast" asp-for="Meal" /> 
+        &nbsp; Breakfast<br />
+         <input type="radio" value="lunch" asp-for="Meal" /> 
+        &nbsp; Breakfast<br />
+         <input type="radio" value="dinner" asp-for="Meal" /> 
+        &nbsp; Breakfast<br />
+         <input type="radio" value="snacks" asp-for="Meal" /> 
+        &nbsp; Breakfast<br />
+
         <button type="submit" value="radiocheckarea" id="theRadioCheckAreaButton" name="theRadioCheckAreaButton"
         asp-page-handler="RadioCheckArea"> Radio/Check/Area Submit</button>
     </form>

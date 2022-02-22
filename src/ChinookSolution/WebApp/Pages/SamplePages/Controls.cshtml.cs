@@ -10,18 +10,29 @@ namespace WebApp.Pages.SamplePages
 
 
         [BindProperty]
-        public string Email { get; set; }
+        public string EmailText { get; set; }
 
         [BindProperty]
         public string PasswordText { get; set; }
 
         [BindProperty]
-        public DateTime DateText { get; set; }
+        public string DateText { get; set; }
 
+        //public DateTime DateText { get; set; } /= DateTime.Today;
         [BindProperty]
-        public TimeSpan TimeText { get; set; }
+        public string TimeText { get; set; }
+        //(if we need a default time from now)
+        //public TimeSpan TimeText { get; set; } /= DateTime.Now.TimeOfDay;
         public void OnGet()
         {
+
+        }
+
+        public IActionResult OnPostTextBox()
+        {
+
+            Feedback = $"Email{ EmailText}; PasswordText {PasswordText };  Date {DateText}; Time{TimeText};";
+            return Pages();
         }
     }
 }
