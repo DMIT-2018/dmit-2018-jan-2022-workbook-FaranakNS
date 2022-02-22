@@ -8,19 +8,26 @@ var builder = WebApplication.CreateBuilder(args);
 
 //supplied database connection due to the fact that we create this web app to use Indiviual accounts
 
+
+
 //Added
 //code retrieves the connection string from appsettings.json
-//code retrives the ChinookDB connecting string
-//var connectionStringChinook = builder.Configuration.GetConnectionString("ChinookDB");
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+//Added
+//code retrives the ChinookDB connection string
+var connectionStringChinook = builder.Configuration.GetConnectionString("ChinookDB");
+
+
 //given
-//register the supplied connecting string with the IservicesCollection(.Services)
+//register the supplied connection string with the IservicesCollection(.Services)
 //registers the connection string for Indiviual Accounts
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+
 //added
-//code the lofic to add our class library services to IServiceCollection
+//code the logic to add our class library services to IServiceCollection
 //one could do the regisrtation code here in Program.cs
 //However,everytime a service class is added,you would be changing this file
 //the implementation of the DbCntent and AddTransient(...) code in this example
@@ -28,7 +35,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //the extentiion method will have a parameter:options.UseSqlServer()
 
 builder.Services.ChinookSystemBackendDependencies(options =>
-    options.UseSqlServer(connectionStringChinook)););
+    options.UseSqlServer(connectionStringChinook));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
