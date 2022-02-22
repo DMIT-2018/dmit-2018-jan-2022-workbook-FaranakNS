@@ -19,8 +19,11 @@ namespace ChinookSystem
             
             Action<DbContextOptionsBuilder> options)
         {
+            //register the DbContext class in chinook with the service collection
             services.AddDbContext<ChinookContext>(options);
 
+            //add any services that you create in the class library
+            //using .AddTransient<T>(...)/
 
         }
     }
