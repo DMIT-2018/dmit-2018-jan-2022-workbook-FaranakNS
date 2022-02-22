@@ -4,10 +4,10 @@
     ViewData["Title"] = "Various Form Controls";
 }
 @section CustomCSS{
-    The file _MyCustomCSS contains valid code that represents css
+   @* The file _MyCustomCSS contains valid code that represents css
     The partial tag will bring in the content of the file
     The section reference of CustomCSS will place the file contents
-    on the layout page in the "nammed " RenderSection
+    on the layout page in the "nammed " RenderSection*@
 
     <partial name="_MyCustomCSS" />
 
@@ -23,6 +23,32 @@
 <div class="onethird">
     <h3>TextBoxes</h3>
     <form method="post">
+        <label>
+            Enter an email
+            <input type="email" asp-for="EmailText"
+            placeholder="enter email"  />
+        </label>
+        <br />
+
+          <label>
+            Enter an Password
+            <input type="password" asp-for="PasswordText"
+            placeholder="enter password" />
+        </label>
+        <br />
+
+          <label>
+            Enter an Date
+            <input type="date" asp-for="DateText"  />
+        </label>
+        <br />
+
+           <label>
+            Enter an Time
+            <input type="time" asp-for="TimeText" />
+        </label>
+        <br />
+
         <button type="submit" value="textbox" id="theTextButton" name="theTextButton"
         asp-page-handler="TextBox">Text Submit</button>
     </form>
