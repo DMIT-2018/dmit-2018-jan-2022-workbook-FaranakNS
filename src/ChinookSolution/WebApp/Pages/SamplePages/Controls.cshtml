@@ -67,15 +67,20 @@
             Select Favorite meal<br />
  
         </label>
-        <input type="radio" value="breakfast" asp-for="Meal" /> 
+       @* <input type="radio" value="breakfast" asp-for="Meal" /> 
         &nbsp; Breakfast<br />
          <input type="radio" value="lunch" asp-for="Meal" /> 
-        &nbsp; Breakfast<br />
+        &nbsp; lunch<br />
          <input type="radio" value="dinner" asp-for="Meal" /> 
-        &nbsp; Breakfast<br />
+        &nbsp; dinner<br />
          <input type="radio" value="snacks" asp-for="Meal" /> 
-        &nbsp; Breakfast<br />
+        &nbsp; snacks<br />
+*@
 
+            @foreach(var item in Model.Meals)
+            { <input type="radio" value="@item" asp-for="Meal" />  @item<br />
+                
+            }
 
        @* //CheckBox*@
        <label>

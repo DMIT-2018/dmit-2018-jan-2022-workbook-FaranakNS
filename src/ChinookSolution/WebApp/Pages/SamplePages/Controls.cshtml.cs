@@ -26,7 +26,8 @@ namespace WebApp.Pages.SamplePages
 
         [BindProperty]
         public string Meal { get; set; }
-
+        //assumes this array is actuallt data retrieve from the database
+        public string[] Meals { get; set; } = new[] { "breakfast", "lunch", "dinner", "snacks"};
         [BindProperty]
         public bool AcceptanceBox { get; set; }
 
