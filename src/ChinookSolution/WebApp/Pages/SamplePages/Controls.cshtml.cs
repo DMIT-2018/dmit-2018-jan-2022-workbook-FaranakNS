@@ -23,6 +23,15 @@ namespace WebApp.Pages.SamplePages
         public string TimeText { get; set; }
         //(if we need a default time from now)
         //public TimeSpan TimeText { get; set; } /= DateTime.Now.TimeOfDay;
+
+        [BindProperty]
+        public string Meal { get; set; }
+
+        [BindProperty]
+        public bool AcceptanceBox { get; set; }
+
+        [BindProperty]
+        public string MessageBody { get; set; }
         public void OnGet()
         {
 
@@ -32,6 +41,13 @@ namespace WebApp.Pages.SamplePages
         {
 
             Feedback = $"Email{ EmailText}; PasswordText {PasswordText };  Date {DateText}; Time{TimeText};";
+            return Pages();
+        }
+
+        public IActionResult OnPostRadioCheckArea()
+        {
+
+            Feedback = $"Meal{ Meal}; Acceptance {AcceptanceBox };  Message {MessageBody};";
             return Pages();
         }
     }
