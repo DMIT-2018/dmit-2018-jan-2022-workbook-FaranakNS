@@ -7,6 +7,19 @@ namespace WebApp.Pages.SamplePages
     {
         [TempData]
         public string Feedback { get; set; }
+
+
+        [BindProperty]
+        public string Email { get; set; }
+
+        [BindProperty]
+        public string PasswordText { get; set; }
+
+        [BindProperty]
+        public DateTime DateText { get; set; }
+
+        [BindProperty]
+        public TimeSpan TimeText { get; set; }
         public void OnGet()
         {
         }
