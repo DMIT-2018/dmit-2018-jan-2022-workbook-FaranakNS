@@ -30,12 +30,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //code the logic to add our class library services to IServiceCollection
 //one could do the regisrtation code here in Program.cs
 //However,everytime a service class is added,you would be changing this file
-//the implementation of the DbCntent and AddTransient(...) code in this example
-//   will be done in an extention method will be coded inside the ChinookSystem class library
+//the implementation of the DbContent and AddTransient(...) code in this example
+//     will be done in an extention method will be coded inside the ChinookSystem class library
 //the extentiion method will have a parameter:options.UseSqlServer()
 
 builder.Services.ChinookSystemBackendDependencies(options =>
     options.UseSqlServer(connectionStringChinook));
+
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
