@@ -41,9 +41,10 @@ namespace WebApp.Pages.SamplePages
         //the data for the list will created in a seprate method
 
         public List<SelectionList> Rides { get; set; }
-
+        [BindProperty]
         public string VacationSpot { get; set; }
         public List<string> VacationSpot { get; set; }
+        [BindProperty]
         public int ReviewRating { get; set; }
 
 
