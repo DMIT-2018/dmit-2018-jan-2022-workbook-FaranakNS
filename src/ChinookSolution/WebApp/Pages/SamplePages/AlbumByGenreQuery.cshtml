@@ -107,8 +107,9 @@
                                             //to cause the query to refreshed for the desiredpage.
                                           <a title="Page @PageRef.Page"
                                           asp-asp-page="/samplePages/AlbumByGenreQuery"
-                                          asp-route-currentPage="@PageRef.Page"
-                                          ></a>
+                                          asp-route-currentPage="@PageRef.Page">
+                                          @pageRef.Page
+                                          </a>
                                         }
 
                                     }
