@@ -86,8 +86,31 @@ namespace WebApp.Pages.SamplePages
 
             if(GenreId.HasValue && GenreId.Value > 0)
             {
-                
+                //installition of the paginator setup
+                //determine the page number to use with the paginator
+                int PageNumber = currentPage.HasValue ? currentPage.Value : 1;
+
+
+                //use the page state to setup data needed for the paging
+                PageState current = new PageState(PageNumber, PAGE_SIZE);
+
+                //total rows in te complete query collection (data needed for paging)
+                int totalrows = 0;
+
+                //for effeiciency of data being transfered we will pass the
+                //      current page number and te desired page size to the backend query
+                //the returned collection will only have the rows of the whole query
+                //  collection that will actually be shown (PAGE_SIZE or less rows)
+
+                //the total number of records for the whole query collection will be 
+                //      returned as an out parameter.This value is needed by the PAginator
+                //      to set up its display logic. 
             AlbumsByGenre = _albumServices.AlbumsByGenre((int)GenreId);
+
+
+                //once the query is complete, use the returned total rows in instaiizating
+                //      an instance of the Paginator
+                Pager = new Paginator(totalrows, current);
             }
 
 
