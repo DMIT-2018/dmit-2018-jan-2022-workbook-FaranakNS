@@ -46,9 +46,26 @@ namespace WebApp.Pages.SamplePages
         #endregion
         [BindProperty]
         public List<SelectionList> GenreList { get; set; }
+
+        [BindProperty]
+        public int GenreId { get; set; }
         public void OnGet()
         {
             GenreList = _genreServices.GetAllGenres();
+        }
+
+        public IActionResult OnPost()
+        {
+            if(GenreId==0)
+            {
+                //propmt line test
+                FeedBack = "You did not select a genre";
+            }
+            else
+            {
+                FeedBack = $"You select genre id of {GenreId}";
+            }
+            return RedirectToPage(); //cause a get request which forces OnGet execution
         }
     }
 }
