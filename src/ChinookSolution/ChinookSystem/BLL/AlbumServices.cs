@@ -39,7 +39,7 @@ namespace ChinookSystem.BLL
         {
 
             //return raw data and let the presentation layer decide ordering
-
+            //  Except...
             //paging 
             //PageNumber(input), PageSize and totalrows (output)are used in implementing the PAginator process.
             //The paginator for this application determines the lines to return the PageModel for processing.
@@ -60,7 +60,8 @@ namespace ChinookSystem.BLL
 
                                                     })
 
-                   .Distinct();
+                                                           .Distinct()
+                                                    .OrderBy(x => x.Title);
             //obtain the number of the total rows for the whole collection
             totalrows = info.Count();
 
