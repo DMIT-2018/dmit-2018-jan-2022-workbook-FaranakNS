@@ -32,9 +32,17 @@ namespace ChinookSystem.BLL
         #endregion
 
         #region Services :Queries
-        public List<AlbumsListBy> AlbumsByGenre(int genreid)
+        public List<AlbumsListBy> AlbumsByGenre(int genreid,
+                                                            int PageNumber, 
+                                                            int PageSize, 
+                                                            out int totalrows)
         {
+
             //return raw data and let the presentation layer decide ordering
+
+            //paging 
+            //PageNumber(input), PageSize and totalrows (output)are used in implementing the PAginator process.
+            //The paginator for this application determines the lines to return the PageModel for processing.
 
             IEnumerable<AlbumsListBy> info = _context.Tracks
                                                     .Where(x => x.GenreId == genreid && x.AlbumId.HasValue)
@@ -48,11 +56,25 @@ namespace ChinookSystem.BLL
                                                         ReleaseYear = x.Album.ReleaseYear,
                                                         ReleaseLabel = x.Album.ReleaseLabel,
                                                         ArtistName = x.Album.Artist.Name
-
+                                                        
 
                                                     })
-                                                    .Distinct();
-            return info.ToList();
+
+                   .Distinct();
+            //obtain the number of the total rows for the whole collection
+            totalrows = info.Count();
+
+            //calculate the number of rows to SKIP in the query collection
+            //the number of rows to skip is dependant on the page number and page size
+            //page:1 : skip 0 rows; page:2 skip page size rows;.... page:n skip page size - 1 rows
+            int skipRows = (PageNumber - 1) * PageSize;
+
+            //use the Linq extensions .Skip() and .Take() to obtain the desired rows 
+            //      from the whole query collection
+            //retunr these rows
+
+
+            return info.Skip(skipRows).Take(PageSize).ToList();
         }
         #endregion
     }

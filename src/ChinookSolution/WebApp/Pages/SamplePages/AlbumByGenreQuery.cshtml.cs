@@ -105,7 +105,9 @@ namespace WebApp.Pages.SamplePages
                 //the total number of records for the whole query collection will be 
                 //      returned as an out parameter.This value is needed by the PAginator
                 //      to set up its display logic. 
-            AlbumsByGenre = _albumServices.AlbumsByGenre((int)GenreId);
+            AlbumsByGenre = _albumServices.AlbumsByGenre((int)GenreId,
+                
+                PageNumber,PAGE_SIZE,out totalrows);
 
 
                 //once the query is complete, use the returned total rows in instaiizating
