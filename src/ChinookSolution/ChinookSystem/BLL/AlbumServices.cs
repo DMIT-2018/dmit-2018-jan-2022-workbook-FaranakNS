@@ -50,7 +50,8 @@ namespace ChinookSystem.BLL
                                                         ArtistName = x.Album.Artist.Name
 
 
-                                                    });
+                                                    })
+                                                    .Distinct();
             return info.ToList();
         }
         #endregion

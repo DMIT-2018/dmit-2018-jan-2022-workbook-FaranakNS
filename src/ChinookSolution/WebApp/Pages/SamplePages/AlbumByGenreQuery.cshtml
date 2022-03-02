@@ -10,6 +10,7 @@
 }
 
 <section clas="setflex">
+   
     <div class="onehalf">
 
 <blockqoute>
@@ -54,7 +55,45 @@
 
 </div>
  <div class="onehalf">
+@*
+     Do not put out anything unless there i soething to show*@
 
+        @if (Model.AlbumsByGenre != null)
+        {
+            @* you have atleast an instance of your collection*@
+            if (Model.AlbumsByGenre.Count() == 0)
+            {
+                <p style="color:blue; font-weight:bold; ">This genre has no tracks on any albums</p>
+            }
+            else
+            {    @*  otherwise you have rows to display*@
 
- </div>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                              <th>Year</th>
+                                <th>Label</th>
+                                  <th>Artist</th>
+                                 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AlbumsByGenre)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                  <td>@item.ReleaseYear</td>
+                                    <td>@item.ReleaseLabel</td>
+                                      <td>@item.ArtistName</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            }
+        }
+    </div>
 </section>
