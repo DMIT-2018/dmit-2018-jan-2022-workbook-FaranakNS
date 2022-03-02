@@ -48,7 +48,7 @@ namespace WebApp.Pages.SamplePages
         public List<SelectionList> GenreList { get; set; }
 
         [BindProperty]
-        public int GenreId { get; set; }
+        public int? GenreId { get; set; }
         public void OnGet()
         {
             GenreList = _genreServices.GetAllGenres();
