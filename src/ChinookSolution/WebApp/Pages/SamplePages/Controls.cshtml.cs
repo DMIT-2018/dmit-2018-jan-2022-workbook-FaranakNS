@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+#region Additional namespaces
 
+using ChinookSystem.ViewModels;
+#endregion
 namespace WebApp.Pages.SamplePages
 {
     public class ControlsModel : PageModel
@@ -43,7 +46,7 @@ namespace WebApp.Pages.SamplePages
         public List<SelectionList> Rides { get; set; }
         [BindProperty]
         public string VacationSpot { get; set; }
-        public List<string> VacationSpot { get; set; }
+        public List<string> VacationSpots { get; set; }
         [BindProperty]
         public int ReviewRating { get; set; }
 
@@ -68,28 +71,28 @@ namespace WebApp.Pages.SamplePages
             Rides.Add(new SelectionList() { ValueId = 5, DisplayText = "Board" });
             Rides.Sort((x, y) => x.DisplayText.CompareTo(y.DisplayText));
 
-            VacationSpot = new List<string>();
-            VacationSpot.add("California");
-            VacationSpot.add("Caribean");
-            VacationSpot.add("Crusing");
-            VacationSpot.add("Europe");
-            VacationSpot.add("Florida");
-            VacationSpot.add("Mexico");
+            VacationSpots = new List<string>();
+            VacationSpots.Add("California");
+            VacationSpots.Add("Caribean");
+            VacationSpots.Add("Crusing");
+            VacationSpots.Add("Europe");
+            VacationSpots.Add("Florida");
+            VacationSpots.Add("Mexico");
 
-        }
+        }  
 
         public IActionResult OnPostTextBox()
         {
 
             Feedback = $"Email{ EmailText}; PasswordText {PasswordText };  Date {DateText}; Time{TimeText};";
-            return Pages();
+            return Page();
         }
 
         public IActionResult OnPostRadioCheckArea()
         {
 
             Feedback = $"Meal{ Meal}; Acceptance {AcceptanceBox };  Message {MessageBody};";
-            return Pages();
+            return Page();
         }
 
 
@@ -99,14 +102,14 @@ namespace WebApp.Pages.SamplePages
 
             Feedback = $"Ride{ MyRide}; Vacation {VacationSpot };  Reveiw Rating {ReviewRating};";
             PopulateList();
-            return Pages();
+            return Page();
         }
     }
 }
 
 
-public class SelectionList
-{
-    public int ValueId { get; set; }
-    public string DisplayText { get; set; }
-}
+////public class SelectionList
+////{
+////    public int ValueId { get; set; }
+////    public string DisplayText { get; set; }
+////}
