@@ -52,6 +52,9 @@ namespace WebApp.Pages.SamplePages
         public void OnGet()
         {
             GenreList = _genreServices.GetAllGenres();
+
+            //sort the List<T> using the method .sort
+            GenreList.Sort((x,y) => x.DisplayText.CompareTo(y.DisplayText));
         }
 
         public IActionResult OnPost()
