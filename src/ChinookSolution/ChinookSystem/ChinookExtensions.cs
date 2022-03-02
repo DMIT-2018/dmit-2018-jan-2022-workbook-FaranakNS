@@ -41,6 +41,15 @@ namespace ChinookSystem
                 return new GenreServices(context);
 
             });
+            services.AddTransient<AlbumServices>((serviceProvider) =>
+
+            {
+                var context = serviceProvider.GetRequiredService<ChinookContext>();
+                //create an instance of the service and return the instance
+                return new AlbumServices(context);
+
+            });
+
         }
     }
 }
