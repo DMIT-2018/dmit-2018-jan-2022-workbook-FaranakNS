@@ -49,12 +49,34 @@ namespace WebApp.Pages.SamplePages
 
         [BindProperty(SupportsGet =true)]
         public int? GenreId { get; set; }
+
+        [BindProperty]
+        public List<AlbumsListBy> AlbumsByGenre { get; set; }
+
+
         public void OnGet()
         {
+            //OnGet is executed as the page first is proceed (as it comes up)
+
+            //consume a service: GetAllGenres in register services of _genreServices
             GenreList = _genreServices.GetAllGenres();
 
             //sort the List<T> using the method .sort
             GenreList.Sort((x,y) => x.DisplayText.CompareTo(y.DisplayText));
+
+
+            //remember that this method execute as the page FIRST come up before
+            // anyting has happened on the page (including first display)
+            // any code ub this method MUST handle the possibilty of missing data for the query arguement
+
+
+            if(GenreId.HasValue && GenreId.Value > 0)
+            {
+                
+            AlbumsByGenre = _albumServices.AlbumsByGenre((int)GenreId);
+            }
+
+
         }
 
         public IActionResult OnPost()
