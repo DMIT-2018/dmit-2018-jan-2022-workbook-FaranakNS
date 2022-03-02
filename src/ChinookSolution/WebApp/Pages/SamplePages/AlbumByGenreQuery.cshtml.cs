@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 #region Additional Namespaces
 using ChinookSystem.BLL;
 using ChinookSystem.ViewModels;
+using WebApp.Helpers;  //contains the class Paginator
 
 #endregion
 namespace WebApp.Pages.SamplePages
@@ -53,8 +54,21 @@ namespace WebApp.Pages.SamplePages
         [BindProperty]
         public List<AlbumsListBy> AlbumsByGenre { get; set; }
 
+        #region Paginator Variables
+        //my desire page size
+        private const int PAGE_SIZE = 5;
 
-        public void OnGet()
+        //instance for the paginator 
+        public Paginator Pager { get; set; }
+        #endregion
+
+
+        //current page value will apear on your url as a  request parameter value
+        //          url address... ? currentPage=n (number)
+
+
+
+        public void OnGet(int? currentPage)
         {
             //OnGet is executed as the page first is proceed (as it comes up)
 
