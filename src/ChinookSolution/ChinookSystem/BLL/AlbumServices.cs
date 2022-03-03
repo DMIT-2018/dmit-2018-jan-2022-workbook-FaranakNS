@@ -39,7 +39,9 @@ namespace ChinookSystem.BLL
         {
 
             //return raw data and let the presentation layer decide ordering
-            //  Except...
+            //  Except when you are also implementing paging then the ordering
+            //  must bedone on the query
+
             //paging 
             //PageNumber(input), PageSize and totalrows (output)are used in implementing the PAginator process.
             //The paginator for this application determines the lines to return the PageModel for processing.
@@ -76,6 +78,24 @@ namespace ChinookSystem.BLL
 
 
             return info.Skip(skipRows).Take(PageSize).ToList();
+        }
+
+        public AlbumItem Albums_GetAlbumById(int albumid)
+        {
+            //linq to entity therefore you need to access the DbSet in your
+            //      context class
+
+            AlbumItem info = _context.Albums
+                            .Where(x => x.AlbumId == albumid)
+                            .Select(x => new AlbumItem
+                            {
+                                AlbumId = x.AlbumId,
+                                Title = x.Title,
+                                ArtistId = x.ArtistId,
+                                ReleaseYear = x.ReleaseYear,
+                                ReleaseLabel = x.ReleaseLabel
+                            }).FirstOrDefault();
+            return info;
         }
         #endregion
     }
