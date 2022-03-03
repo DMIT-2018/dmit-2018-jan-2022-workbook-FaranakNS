@@ -82,7 +82,14 @@
                         @foreach (var item in Model.AlbumsByGenre)
                         {
                             <tr>
-                                <td>@item.Title</td>
+@*                                the Title cell text will act as a link to transfer to the CRUD page for album maintanance the href uses the full relative path to the refrenced page
+                                -the pkey value is attached  to the path name
+
+*@                                <td>
+                                     <a href="/SamplePages/CRUDAlbum/@item.AlbumId"></a>
+    
+                                         @item.Title
+                                    </td>
                                   <td>@item.ReleaseYear</td>
                                     <td>@item.ReleaseLabel</td>
                                       <td>@item.ArtistName</td>
