@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ChinookSystem.Entities;
-using ChinookSystem.ViewModels;
+
 
 #nullable disable
 #region Additional Namespaces
-
+using ChinookSystem.ViewModels;
+using ChinookSystem.Entities;
+using ChinookSystem.BLL;
 using ChinookSystem.DAL;
 #endregion
 
@@ -38,13 +40,13 @@ namespace ChinookSystem.BLL
         //services are methods
 
         //query to obtain the DbVersion data
-        public Entities.DbVersionInfo GetDbVersion()
+        public DbVersionInfo GetDbVersion()
         {
             //DbVersionInfo is a public "view" of data defined in a class
             //DBVersionInfo can be a class used BOTH internally and by external users
             //DbVersion is an internal entity description used ONLY in the libaray
-            Entities.DbVersionInfo info = _context.DbVersions
-                                .Select(x => new Entities.DbVersionInfo
+            DbVersionInfo info = _context.DbVersions
+                                .Select(x => new DbVersionInfo
                                 {
                                     Major = x.Major,
                                     Minor = x.Minor,
@@ -52,8 +54,8 @@ namespace ChinookSystem.BLL
                                     ReleaseDate = x.ReleaseDate
                                 })
                                 .SingleOrDefault();
-            return info;
 
+            return info;
         }
         #endregion
     }

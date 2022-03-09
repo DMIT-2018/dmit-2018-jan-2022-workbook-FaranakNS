@@ -18,8 +18,8 @@ namespace WpfLibrary1.Entities
 
         [Key]
         public int AlbumId { get; set; }
-        [Required]
-        [StringLength(160)]
+        [Required(ErrorMessage ="Album title is required.")]
+        [StringLength(160, /*MinimumLength =6*/ ErrorMessage ="album title is limited to 160 characters" )]
         public string Title { get; set; }
         public int ArtistId { get; set; }
         public int ReleaseYear { get; set; }

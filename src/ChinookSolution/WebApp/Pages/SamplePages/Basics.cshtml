@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id?}"
 @model WebApp.Pages.SamplePages.BasicsModel
 @{
 @* //the cshtml page contains both c# code and html code
@@ -20,3 +20,21 @@
 
 <p>@Model.MyName</p>
 } <!--eof-->
+
+
+
+<h3>Demnstration of OnPost request processing for a form</h3>
+<form method="post">
+    <label>
+        Enter a number
+        <input type="number" asp-for="id" /><br />
+    </label>
+    <button type="submit" value="A" id="theButton" name="theButton" >A Button</button>
+
+    &nbsp; &ensp;  @*put white space physically in the program*@
+
+      <button type="submit" value="B" id="theButton" name="theButton" >B Button</button>
+</form>
+<br />
+
+<p style="color: forestgreen; font-weight:bold;">@Model.Feedback</p>
